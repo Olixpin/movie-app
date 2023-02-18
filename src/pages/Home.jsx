@@ -1,10 +1,14 @@
 import React from 'react'
-import { Hero } from '../layouts'
-import { Header } from '../layouts/Header'
+import { Hero, Main } from '../layouts'
 import './Home.css'
 
 const Home = () => {
-  return <Hero />
+  return (
+    <>
+      <Hero />
+      <Main />
+    </>
+  )
 }
 
 export { Home }

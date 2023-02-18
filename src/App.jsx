@@ -4,7 +4,7 @@ import './App.css'
 import { getMovies } from './utils/api'
 import { createBrowserRouter, RouterProvider, Routes } from 'react-router-dom'
 import { Layout } from './layouts'
-import { Home, About, Error } from './pages'
+import { Home, About, Error, Movies, Movie } from './pages'
 
 const Router = createBrowserRouter([
   {
@@ -20,12 +20,15 @@ const Router = createBrowserRouter([
         path: '/about',
         element: <About />,
       },
-      // {
-      //   path: '/movies',
-      //   element: <Movies />,
-      // },
-      // {
-      //   path: '/movies/:movieId',
+      {
+        path: '/movies',
+        element: <Movies />,
+      },
+
+      {
+        path: '/movies/:id',
+        element: <Movie />,
+      },
     ],
   },
 ])

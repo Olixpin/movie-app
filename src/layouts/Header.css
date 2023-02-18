@@ -1,11 +1,11 @@
 header {
-  background-color: rgba(57, 57, 57, 0.266);
+  background-color: rgba(57, 57, 57, 0.433);
   width: 56px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 1;
   overflow: hidden;
   transition: width 300ms;
   will-change: width;
@@ -16,13 +16,16 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
+  /* justify-content: space-around; */
+  height: 100%;
 }
 
-.logo {
-  height: 5.5em;
+.logo-header {
   will-change: filter;
   transition: filter 300ms;
+  height: 2rem;
+  margin-bottom: 2rem;
 }
 
 nav ul {
