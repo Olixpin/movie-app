@@ -36,6 +36,18 @@ const searchMovies = async (query) => {
   }
 }
 
+const filterMovies = async (releasedYear, genre) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&primary_release_year=${releasedYear}&with_genres=${genre}`
+    )
+    const data = await response.json()
+    return Promise.resolve(data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 const loadMoreMovies = async (page) => {
   try {
     const response = await fetch(`${API_URL}&page=${page}`)
@@ -58,6 +70,42 @@ const movieId = async (id) => {
   }
 }
 
+const genres = async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    )
+    const data = await response.json()
+    return Promise.resolve(data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+const filterMoviesByGenre = async (genre) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
+    )
+    const data = await response.json()
+    return Promise.resolve(data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+const filterMoviesByDate = async (startDate, endDate) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}`
+    )
+    const data = await response.json()
+    return Promise.resolve(data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 export {
   getMovies,
   getTrendingMovies,
@@ -65,4 +113,8 @@ export {
   loadMoreMovies,
   API_KEY,
   movieId,
+  filterMovies,
+  genres,
+  filterMoviesByGenre,
+  filterMoviesByDate,
 }

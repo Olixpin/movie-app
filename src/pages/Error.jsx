@@ -9,9 +9,7 @@ const Error = () => {
     <div>
       <h1>Uh oh, something went terribly wrong 😩</h1>
       <pre>{error.message || JSON.stringify(error)}</pre>
-      <button onClick={() => navigate('/')}>
-        Click here to reload the app
-      </button>
+      <button onClick={() => navigate('/')}>&larr; Go back home</button>
     </div>
   )
 }

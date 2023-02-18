@@ -34,8 +34,6 @@ const Hero = () => {
     setIndex(index)
   }
 
-  console.log(randomMovie ? randomMovie[index] : hero)
-
   return (
     <div
       className="hero"

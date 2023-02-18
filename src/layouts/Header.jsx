@@ -9,6 +9,7 @@ import { Link, useParams } from 'react-router-dom'
 import { movieId } from '../utils/api'
 import setting from '../assets/settings.svg'
 import account from '../assets/account.svg'
+import { useLocation } from 'react-router-dom'
 
 const links = [
   {
@@ -58,13 +59,16 @@ const Header = () => {
     }
   }, [])
 
-  console.log(scrollUp)
+  const { pathname } = useLocation()
+
+  console.log(pathname)
+
   return (
     <>
       {scrollUp && (
         <header
           style={{
-            height: id ? '100vh' : '',
+            height: id || pathname === '/movies' ? '100vh' : '',
           }}
         >
           <div className="header-content">

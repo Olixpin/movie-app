@@ -35,7 +35,7 @@ const Movie = () => {
             <p className="text-white">{movie?.overview}</p>
             <div className="flex items-center">
               <RxDotFilled className="text-orange-500" />
-              <p className="text-white ml-2">{movie?.vote_average}</p>
+              <p className="text-white ml-2">Rating: {movie?.vote_average}</p>
             </div>
             <p className="text-white">Release date {movie?.release_date}</p>
 
@@ -51,6 +51,16 @@ const Movie = () => {
                 })}
               </div>
             </div>
+            <button className=" text-white hover:text-white border border-white px-4 py-2 w-max">
+              <a
+                className="text-white hover:text-white"
+                href={movie?.homepage}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit Website
+              </a>
+            </button>
           </div>
           <div className="right"></div>
         </div>
