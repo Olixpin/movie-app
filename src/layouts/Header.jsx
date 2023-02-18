@@ -45,7 +45,7 @@ const Header = () => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 114) {
         setScrollUp(false)
       } else {
         setScrollUp(true)

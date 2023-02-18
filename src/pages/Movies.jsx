@@ -7,7 +7,6 @@ import {
   filterMoviesByGenre,
   filterMoviesByDate,
 } from '../utils/api'
-import { scrollToTop } from '../ui/ScrollToTop'
 
 const Movies = () => {
   const [movies, setMovies] = React.useState([])
@@ -58,17 +57,17 @@ const Movies = () => {
     })
   }
 
+  if (loading) {
+    ;<div className="flex justify-center items-center h-[60vh]">
+      <h1 className="text-2xl font-bold">Loading...</h1>
+    </div>
+  }
+
   return (
     <section className="p-8 min-h-[60vh] ">
       <div className="movies-content ml-[56px]">
-        <div
-          className=""
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 3fr',
-          }}
-        >
-          <div className="left h-full p-5">
+        <div className="filter flex max-[728px]:flex max-[728px]:flex-col">
+          <div className="left h-full p-5 flex-[0.2]">
             <h3 className="mb-4">Filter by Genres</h3>
             <div className="flex flex-wrap gap-2 h-max">
               <button
@@ -110,9 +109,9 @@ const Movies = () => {
               })}
             </div>
             <h3 className="mt-4 mb-4">Filter by release date</h3>
-            <div className="flex flex-wrap gap-2 h-max">
+            <div className="flex flex-wrap gap-2 h-max max-[425px]:flex-col">
               <form action="">
-                <div className="flex gap-2">
+                <div className="flex gap-2 max-[425px]:flex-col">
                   <input
                     onChange={handleStartDate}
                     type="date"
@@ -128,7 +127,7 @@ const Movies = () => {
                 </div>
                 <button
                   className="btn btn-primary mt-2 w-full bg-orange-600
-                    bg-[rgb(45, 45, 45)] border border-gray-900 py-2 px-2  text-sm font-light
+                    bg-[rgb(45, 45, 45)] border border-gray-900 py-2 px-2  text-sm font-light 
                     "
                   onClick={handleSearch}
                 >
@@ -137,18 +136,12 @@ const Movies = () => {
               </form>
             </div>
           </div>
-          <div className="right">
-            <div className="grid grid-cols-4 gap-4">
+          <div className="right flex-0.8">
+            <div className="grid grid-cols-4 gap-4 max-[1028px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1">
               {movies.map((movie) => {
                 const { id, title, poster_path, vote_average } = movie
                 return (
-                  <Link
-                    to={`/movies/${id}`}
-                    key={id}
-                    onClick={() => {
-                      scrollToTop()
-                    }}
-                  >
+                  <Link to={`/movies/${id}`} key={id} onClick={() => {}}>
                     <div
                       key={id}
                       className="movie-card bg-[#222222] p-4 rounded-md"
@@ -179,7 +172,6 @@ const Movies = () => {
                     "
                     onClick={() => {
                       loadMore()
-                      scrollToTop()
                     }}
                     disabled={page === totalPages}
                   >
